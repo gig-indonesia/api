@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
-const helpers = require("../helpers")
+const helpers = require("../helpers");
 
-router.get("/:id", controller.search);
 router.get("/", helpers.isAuthenticated, controller.getAll);
 router.post("/", controller.post);
-router.delete("/:id", controller.deleteOne)
-router.put("/:id", controller.search)
+router.delete("/:id", controller.delete);
+router.delete("/", controller.deleteAll);
+router.put("/:id", controller.update);
+router.get("/search", controller.search);
 
 module.exports = router;

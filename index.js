@@ -18,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use("/customers", customers);
 app.use("/accounts", accounts);
 app.use("/artists", artists);
-
+app.use("/", (req, res) => {
+  res.send("This is API demo");
+});
 
 app.listen(PORT, () => console.log(`App running on port ${PORT}`));

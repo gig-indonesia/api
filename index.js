@@ -4,7 +4,7 @@ const PORT = process.env.PORT;
 const express = require("express");
 const app = express();
 const accounts = require("./api/accounts");
-// const hosts = require("./api/hosts");
+const hosts = require("./api/hosts");
 const artists = require("./api/artists");
 // const gigApplied = require("./api/gigApplied");
 // const gigCreated = require("./api/gigCreated");
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use("/products", products);
-// app.use("/customers", customers);
+app.use("/hosts", hosts);
 app.use("/accounts", accounts);
 app.use("/artists", artists);
 app.use("/", (req, res) => {

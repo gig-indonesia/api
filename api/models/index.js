@@ -37,6 +37,12 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// Object.keys(db).forEach(modelName => {
+//   if (db[modelName].hasOwnProperty("associate")) {
+//     db[modelName].associate(db);
+//   }
+// });
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

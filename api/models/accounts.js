@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+"use strict";
+
+>>>>>>> 418c701b7d3848094a0bed6bcc8d427c1918ddf1
 module.exports = (sequelize, DataTypes) => {
   const accounts = sequelize.define("accounts", {
     username: {

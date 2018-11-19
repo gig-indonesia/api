@@ -1,20 +1,12 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  var artists = sequelize.define("artists", {
+  var hosts = sequelize.define("hosts", {
     name: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    type: {
-      type: DataTypes.ENUM("solo", "group"),
-      allowNull: false
-    },
-    photo: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    video: {
+    company: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
@@ -28,9 +20,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  artists.associate = models => {
+  hosts.associate = models => {
     console.log(models);
-    artists.belongsTo(models.accounts, {
+    hosts.belongsTo(models.accounts, {
       onDelete: "CASCADE",
       as: "account",
       foreignKey: {
@@ -39,5 +31,5 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  return artists;
+  return hosts;
 };

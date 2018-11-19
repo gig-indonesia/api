@@ -1,43 +1,51 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  var artists = sequelize.define("artists", {
-    name: {
+  var createGigs = sequelize.define("createGigs", {
+    title: {
       type: DataTypes.STRING(255),
       allowNull: false
     },
-    type: {
-      type: DataTypes.ENUM("solo", "group"),
+    budget: {
+      type: DataTypes.DECIMAL(),
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATE(),
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING(255),
       allowNull: false
     },
     photo: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    video: {
+    location: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
-    accountId: {
+    hostId: {
       type: DataTypes.INTEGER(),
       unique: true,
       references: {
-        model: "accounts",
+        model: "hosts",
         key: "id"
       }
     }
   });
 
-  artists.associate = models => {
+  createGigs.associate = models => {
     console.log(models);
-    artists.belongsTo(models.accounts, {
+    createGigs.belongsTo(models.hosts, {
       onDelete: "CASCADE",
-      as: "account",
+      as: "hosts",
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return artists;
+  return createGigs;
 };

@@ -21,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   notification.associate = models => {
-    console.log(models);
     notification.belongsTo(models.notification, {
       onDelete: "CASCADE",
       as: "appliedGigs",
